@@ -24,6 +24,42 @@ public class MonthlySummary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly_summary);
+
+        ValueEventListener mangrooveDataListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int bakhawCount = 0;
+                int bungalonCount = 0;
+                int pagatpatCount = 0;
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(
+                        ds.child("bakhaw").getValue() == null &&
+                        ds.child("bungalon").getValue() == null &&
+                        ds.child("pagatpat").getValue() == null
+                    ){
+                        return ;
+                    }else{
+                        bakhawCount += Integer.parseInt(ds.child("bakhaw").getValue().toString());
+                        bungalonCount += Integer.parseInt(ds.child("bungalon").getValue().toString());
+                        pagatpatCount += Integer.parseInt(ds.child("pagatpat").getValue().toString());
+                    }
+                }
+                TextView  totalBakhaw = (TextView) findViewById(R.id.totalBakhaw);
+                TextView  totalBungalon = (TextView) findViewById(R.id.totalBungalon);
+                TextView  totalPagatpat = (TextView) findViewById(R.id.totalPagatpat);
+                TextView  totalTrees = (TextView) findViewById(R.id.totalTrees);
+                totalBakhaw.setText(bakhawCount + "");
+                totalBungalon.setText(bungalonCount + "");
+                totalPagatpat.setText(pagatpatCount + "");
+                totalTrees.setText(pagatpatCount + bungalonCount +bakhawCount + "");
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(databaseError.toException());
+            }
+        };
+        reference.addValueEventListener(mangrooveDataListener);
     }
     public void showBakhaw(View v) {
         setMangroove("bakhaw");

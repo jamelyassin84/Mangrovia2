@@ -28,6 +28,7 @@ tools:layout_editor_absoluteY="0dp">
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
        <ScrollView
            android:id="@+id/scrollView6"
            android:layout_width="match_parent"
@@ -40,10 +41,68 @@ tools:layout_editor_absoluteY="0dp">
                android:padding="20dp"
                android:layout_height="match_parent" >
 
+               <TextView
+                   android:layout_width="257dp"
+                   android:layout_height="22dp"
+                   android:text="Total Bakhaw"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:id="@+id/totalBakhaw"
+                   android:layout_width="257dp"
+                   android:layout_height="wrap_content"
+                   android:text="0"
+                   android:textSize="30dp"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:layout_width="257dp"
+                   android:layout_height="22dp"
+                   android:text="Total Bungalon"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:id="@+id/totalBungalon"
+                   android:layout_width="257dp"
+                   android:layout_height="wrap_content"
+                   android:text="0"
+                   android:textSize="30dp"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:layout_width="257dp"
+                   android:layout_height="22dp"
+                   android:text="Total Pagatpat"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:id="@+id/totalPagatpat"
+                   android:layout_width="257dp"
+                   android:layout_height="wrap_content"
+                   android:text="0"
+                   android:textSize="30dp"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:layout_width="257dp"
+                   android:layout_height="22dp"
+                   android:text="Total Trees"
+                   android:textColor="@color/white"
+                   />
+               <TextView
+                   android:id="@+id/totalTrees"
+                   android:layout_width="257dp"
+                   android:layout_height="wrap_content"
+                   android:text="0"
+                   android:textSize="30dp"
+                   android:textColor="@color/white"
+                   />
+
            <TextView
                android:id="@+id/textView150"
                android:layout_width="257dp"
                android:layout_height="22dp"
+               android:layout_marginTop="20dp"
                android:text="@string/select_year"
                android:textColor="@color/white"
                />
