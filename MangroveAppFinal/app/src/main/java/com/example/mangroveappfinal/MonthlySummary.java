@@ -41,7 +41,12 @@ public class MonthlySummary extends AppCompatActivity {
     String year = new SimpleDateFormat("yyyy").format(date);
     private void setMangroove(String type){
         EditText yearText = (EditText) findViewById(R.id.year);
-        year = yearText.getText().toString();
+        if(yearText.getText().toString().matches("")){
+            Toast.makeText(getApplicationContext(), "Please Enter Year", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            year = yearText.getText().toString();
+        }
         ValueEventListener mangrooveDataListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -58,43 +63,80 @@ public class MonthlySummary extends AppCompatActivity {
                     int novCount = 0;
                     int decCount = 0;
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if(ds.child("month").getValue().toString().contains("Jan") && ds.child("year").getValue().toString().contains(year)  ){
-                            janCount += Integer.parseInt(ds.child(type).getValue().toString());
+                        if(ds.child(type).getValue() != null){
+                            if(
+                                    ds.child("month").getValue().toString().contains("Jan") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                janCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Feb") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                febCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Mar") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                marCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Apr") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                aprCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("May") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                mayCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Jun") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                junCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Jul") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                julCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Aug") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                augCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Sept") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                sepCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Oct") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                octCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Nov") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                novCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
+                            if(
+                                    ds.child("month").getValue().toString().contains("Dec") &&
+                                            ds.child("year").getValue().toString().contains(year)
+                            ){
+                                decCount += Integer.parseInt(ds.child(type).getValue().toString());
+                            }
                         }
-                        if(ds.child("month").getValue().toString().contains("Feb") && ds.child("year").getValue().toString().contains(year)  ){
-                            febCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Mar") && ds.child("year").getValue().toString().contains(year)  ){
-                            marCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Apr") && ds.child("year").getValue().toString().contains(year)  ){
-                            aprCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("May") && ds.child("year").getValue().toString().contains(year)  ){
-                            mayCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Jun") && ds.child("year").getValue().toString().contains(year)  ){
-                            junCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Jul") && ds.child("year").getValue().toString().contains(year)  ){
-                            julCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Aug") && ds.child("year").getValue().toString().contains(year)  ){
-                            augCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Sept") && ds.child("year").getValue().toString().contains(year)  ){
-                            sepCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Oct") && ds.child("year").getValue().toString().contains(year)  ){
-                            octCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Nov") && ds.child("year").getValue().toString().contains(year)  ){
-                            novCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-                        if(ds.child("month").getValue().toString().contains("Dec") && ds.child("year").getValue().toString().contains(year)  ){
-                            decCount += Integer.parseInt(ds.child(type).getValue().toString());
-                        }
-//
                     }
                     TextView  jan = (TextView) findViewById(R.id.january1);
                     TextView  feb = (TextView) findViewById(R.id.january2);
@@ -108,6 +150,7 @@ public class MonthlySummary extends AppCompatActivity {
                     TextView  oct = (TextView) findViewById(R.id.january10);
                     TextView  nov = (TextView) findViewById(R.id.january11);
                     TextView  dec = (TextView) findViewById(R.id.january12);
+                    jan.setText(janCount + "");
                     feb.setText(febCount + "");
                     mar.setText(marCount + "");
                     apr.setText(aprCount + "");

@@ -129,4 +129,6 @@
     <string name="bungalon">Bungalon</string>
     <string name="bakhaw">Bakhaw</string>
     <string name="pagatpat">Pagatpat</string>
+    <string name="total">Total :</string>
+    <string name="_0">0</string>
 </resources>
